@@ -1,0 +1,93 @@
+#########  About the Author ##############
+Program Name: Whatsup, a multiple-client, single-server chatting program.
+Author : Yichen Jia (yjia@csc.lsu.edu)
+Date : Nov 4th, 2015
+Class : CSC4501 Computer Networks
+Advisor : Dr.Seung-Jong Park 
+#######   About the project ############
+This project is a chatting program that use socket programming. 
+This program has a multiple-client, single-server architecture and 
+all the communication between clients are through the server. 
+Each client can login the server and send message to all the clients, 
+the groups and one specific client. 
+Also, the server provides some services such as blocking, online users view and so on.  
+Because of the architecture we have, chatting messaging should be non-blocking. 
+Servers use multiple threading to handle multiple clients at a time and clients are 
+able to deal with connections and user input at the same time. 
+########  Usage Documentation #####################
+0.Setup the environment. 
+python chatting_server.py is used to run the server. 
+python chatting_client.py 127.0.0.1 9009 is used to run the client in other terminals. 
+
+1.Login to chat service.
+Please enter your name:
+ethan
+Hi ethan,please enter your password:
+123
+Enjoy your chatting.
+
+2.View online users:
+You may open serveral terminals and login to the service like step 1. In one terminal,type
+$ONLINE
+you can see all the online users.
+
+3.Blocked users:
+You may type 
+%usr_name:BLOCK to block the usr. For example, if you want to block ethan you should type
+%ethan:BLOCK
+If you block someone, you cannot broadcast him, cannot invite him to group chat, cannot see his 
+online status, cannot @him, and vice versa. 
+If you want to unblock the user, type
+%usr_name:UNBLOCK, like the example above, type
+%ethan:UNBLOCK
+
+4. Send message: 
+You may type whatever you want in the terminal, and the message will go to all the online users.
+If you want to send message to one specific user, you should type
+@usr_name Hello 
+For example, if you want to send Hello to ethan, you should type
+@ethan Hello
+
+5, Logout of chatting service:
+If you want to logout, you should type
+!q
+
+6. Create Group Chat:
+If you want to create or join one group, you should type
+#group_name:join
+For example, to create a group that is called network, you should type
+#network:join
+
+7. Accept/reject group chat invitation:
+If you want to invite someone to the group chat, you should type
+#group_name:invite:usr_name
+If the user want to accept the invitation, he should reply #group_name:yes
+For example, if you want to invite ethan to group network you should type
+#network:invite:ethan
+If ethan wants to accept the invitation, he should reply #network:yes.
+
+8. Disband/invite/remove group chat:
+The command should look like 
+#group_name:disband
+#group_name:invite:usr_name
+#group_name:remove:usr_name
+For example, if you want to disband group network, you should type
+#network:disband
+if you want to invite ethan, you should type
+#network:invite:ethan
+if you want to remove ethan, you should type
+#network:remove:ethan
+
+9. Send group message:
+If you want to send group message, you should type
+#group_name Msg
+For example, if you want to send Hello to group network, you should type 
+#network Hello
+
+10. Leave group chat:
+If you want to leave the group chat, you should type
+#group_name:leave
+For example, if you want to leave group network, you should type
+#network:leave
+
+
